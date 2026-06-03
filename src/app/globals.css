@@ -1,26 +1,272 @@
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
 @import "tailwindcss";
 
+/* ── Design Tokens ──
+   Matches the Suki Perks & Suki Merchant Flutter apps (dark theme).
+   Brand: mint green #1DDC8F. Secondary accent: gold #F5C542 (tier/points). */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --suki-mint:        #1DDC8F; /* AppColors.primary */
+  --suki-mint-light:  #5BE9B0;
+  --suki-mint-deep:   #0F6F50; /* AppColors.mintContainerText */
+  --suki-gold:        #F5C542; /* AppColors.tierGold / tierStar */
+  --suki-gold-light:  #FFB74D; /* AppColors.pointsTextDark */
+  --suki-on-primary:  #0B1F16; /* AppColors.onPrimary — dark text on mint */
+  --suki-bg:          #102216; /* AppColors.darkBackground */
+  --suki-surface:     #183422; /* AppColors.darkSurface */
+  --suki-surface-2:   #1B332B; /* AppColors.darkSurfaceVariant */
+  --suki-border:      rgba(29,220,143,0.18);
+  --suki-border-2:    #29443A; /* AppColors.borderDark */
+  --suki-text:        #F2F6F4; /* AppColors.textWhite */
+  --suki-text-muted:  #9BB0A8; /* AppColors.textGreyDark */
+  --suki-perks:       #1DDC8F;
+  --suki-merchant:    #F5C542;
+  --radius-lg:        1rem;
+  --radius-xl:        1.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--suki-bg);
+  color: var(--suki-text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+a {
+  color: var(--suki-mint);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover { color: var(--suki-mint-light); }
+
+/* ── Gradient Text ── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--suki-mint-light) 0%, var(--suki-mint) 55%, #14B377 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glass Card ── */
+.glass-card {
+  background: rgba(24, 52, 34, 0.7);
+  border: 1px solid var(--suki-border-2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-xl);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.glass-card:hover {
+  border-color: var(--suki-border);
+  transform: translateY(-2px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+}
+
+/* ── Amber Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.badge-amber {
+  background: rgba(245,197,66,0.15);
+  color: var(--suki-gold);
+  border: 1px solid rgba(245,197,66,0.3);
+}
+.badge-orange {
+  background: rgba(255,183,77,0.15);
+  color: var(--suki-gold-light);
+  border: 1px solid rgba(255,183,77,0.3);
+}
+.badge-green {
+  background: rgba(29,220,143,0.15);
+  color: var(--suki-mint);
+  border: 1px solid rgba(29,220,143,0.3);
+}
+
+/* ── Ambient glow blobs ── */
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Section divider ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--suki-border), transparent);
+  margin: 0;
+}
+
+/* ── Prose (legal pages) ── */
+.legal-prose h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--suki-text);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--suki-border-2);
+}
+.legal-prose h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--suki-mint);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.legal-prose p {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--suki-text-muted);
+  margin-bottom: 1rem;
+}
+.legal-prose ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: var(--suki-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.legal-prose ul li { margin-bottom: 0.375rem; }
+.legal-prose strong { color: var(--suki-text); font-weight: 600; }
+.legal-prose a { color: var(--suki-mint); }
+.legal-prose a:hover { text-decoration: underline; }
+
+/* ── Step card ── */
+.step-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.step-number {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--suki-mint), var(--suki-mint-deep));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--suki-on-primary);
+  margin-top: 0.125rem;
+}
+
+/* ── Accordion ── */
+.accordion-item {
+  border-bottom: 1px solid var(--suki-border-2);
+}
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.125rem 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--suki-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s ease;
+  gap: 1rem;
+}
+.accordion-trigger:hover { color: var(--suki-mint); }
+.accordion-trigger .chevron {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.25s ease;
+  color: var(--suki-text-muted);
+}
+.accordion-trigger[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+.accordion-content.open {
+  max-height: 1000px;
+}
+.accordion-content p {
+  padding-bottom: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--suki-text-muted);
+}
+
+/* ── Tabs ── */
+.tab-bar {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--suki-surface);
+  padding: 0.25rem;
+  border-radius: 0.75rem;
+  width: fit-content;
+}
+.tab-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--suki-text-muted);
+  transition: all 0.2s ease;
+}
+.tab-btn.active {
+  background: var(--suki-surface-2);
+  color: var(--suki-mint);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--suki-bg); }
+::-webkit-scrollbar-thumb { background: rgba(29,220,143,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(29,220,143,0.6); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.6; }
+}
+.animate-fade-up   { animation: fadeUp 0.6s ease forwards; }
+.animate-fade-up-2 { animation: fadeUp 0.6s 0.15s ease forwards; opacity: 0; }
+.animate-fade-up-3 { animation: fadeUp 0.6s 0.3s ease forwards; opacity: 0; }
+.animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
