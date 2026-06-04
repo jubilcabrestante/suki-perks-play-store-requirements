@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Suki Platform — Legal & Support Hub
 
-## Getting Started
+Static Next.js site hosting the Google Play Store compliance pages for **Suki Perks** (customer loyalty) and **Suki Merchant** (POS & merchant app):
 
-First, run the development server:
+- Privacy Policy
+- Account Deletion
+- Terms of Service
+- Support
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000> — the dev server runs at the root path (no basePath).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment (GitHub Pages)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This site is deployed as a **static export** via GitHub Actions, **not** Vercel.
 
-## Learn More
+- `next.config.ts` sets `output: "export"` and a `basePath` of `/suki-platform-play-store-requirements` (the repo name) so links and assets resolve under the project-site URL.
+- `.github/workflows/deploy.yml` builds the site and publishes `./out` to Pages on every push to `master`.
 
-To learn more about Next.js, take a look at the following resources:
+**One-time setup:** in the GitHub repo, go to **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**. After that, every push to `master` redeploys automatically.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Live URL: <https://jubilcabrestante.github.io/suki-platform-play-store-requirements/>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> ⚠️ The `basePath` must match the repository name. If you rename the repo, update `repo` in `next.config.ts`.
