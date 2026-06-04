@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 // GitHub Pages serves this as a *project site* under /<repo>, so in production
 // the app must be built with a matching basePath. Local `next dev` keeps the
 // root path so http://localhost:3000 works unchanged.
-const repo = "suki-platform-play-store-requirements";
+const repo = "suki-perks-play-store-requirements";
 const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
