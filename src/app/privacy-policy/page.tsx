@@ -118,7 +118,7 @@ export default function PrivacyPolicyPage() {
           <p>
             We retain your personal data for as long as your account remains active. We do{" "}
             <strong>not delete accounts automatically</strong> based on time or inactivity — your information is kept
-            unless and until you choose to delete your account. When you request deletion, your account is
+            unless and until you choose to delete your account. When you request deletion and confirm it via the verification email, your account is
             deactivated immediately and enters a <strong>30-day recovery period</strong>, during which you can
             restore it by signing back in. After 30 days, your account profile and personal details (name, phone,
             email, photo) are permanently deleted and you can no longer sign in.

@@ -24,13 +24,13 @@ const perkSteps = [
   },
   {
     n: 4,
-    title: "Select Delete Account",
-    desc: 'Scroll down and tap "Delete Account". Read the warning about data removal.',
+    title: "Request Deletion",
+    desc: 'Scroll down and tap "Delete Account". Confirm your request to initiate the process.',
   },
   {
     n: 5,
-    title: "Confirm Deletion",
-    desc: 'Enter your PIN or confirm via biometrics, then tap "Confirm Delete". Your account is deactivated immediately and permanently deleted after 30 days — sign back in within 30 days to cancel.',
+    title: "Confirm via Email",
+    desc: 'Check your registered email address for a deletion email and click the verification link. Your account will be deactivated immediately and permanently deleted after 30 days.',
   },
 ];
 
@@ -42,23 +42,23 @@ const merchantSteps = [
   },
   {
     n: 2,
-    title: "Go to Settings",
-    desc: 'Tap the menu icon and navigate to "Account Settings".',
+    title: "Go to Profile",
+    desc: 'Tap the Profile icon on the bottom navigation bar.',
   },
   {
     n: 3,
-    title: "Select Delete Account",
-    desc: 'Scroll to the bottom and tap "Delete My Account".',
+    title: "Open Settings",
+    desc: 'Tap the settings or gear icon in the top-right corner of your profile.',
   },
   {
     n: 4,
-    title: "Confirm with PIN",
-    desc: "You will be prompted to enter your security PIN to verify your identity.",
+    title: "Request Deletion",
+    desc: 'Scroll down and tap "Delete Account". Confirm your request to initiate the process.',
   },
   {
     n: 5,
-    title: "Final Confirmation",
-    desc: 'Tap "Yes, Delete Permanently". Your merchant account is deactivated immediately and permanently deleted after 30 days unless you sign back in to cancel. Your products and sales records are retained as business records.',
+    title: "Confirm via Email",
+    desc: 'Check your registered email address for a deletion email and click the verification link. Your account will be deactivated immediately and permanently deleted after 30 days.',
   },
 ];
 
@@ -127,9 +127,9 @@ export default function AccountDeletionPage() {
               You have 30 days to change your mind
             </p>
             <p style={{ color: "var(--suki-text-muted)", fontSize: "0.875rem", lineHeight: 1.65 }}>
-              Deleting your account takes effect immediately — it is deactivated and you are signed out on all
-              devices. You then have a <strong style={{ color: "#F2F6F4" }}>30-day recovery period</strong>: sign
-              back in within 30 days to restore your account. After 30 days, your account profile and personal
+              Deleting your account takes effect immediately after you confirm the request via email — it is deactivated
+              and you are signed out on all devices. You then have a <strong style={{ color: "#F2F6F4" }}>30-day recovery period</strong>:
+              sign back in within 30 days to restore your account. After 30 days, your account profile and personal
               details are permanently deleted and you can no longer sign in. Transaction and business records (order
               history, and for merchants your products and sales reports) are retained as operational and legal
               records, no longer linked to an active account. We never delete accounts automatically for inactivity
